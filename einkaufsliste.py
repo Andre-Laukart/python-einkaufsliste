@@ -1,5 +1,3 @@
-# Einkaufsliste mit Eingabe, Anzeige, Entfernen, Hinzufügen und Beenden
-
 einkaufsliste = []
 eingabe = "y"
 
