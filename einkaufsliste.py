@@ -1,49 +1,41 @@
-einkaufsliste = []
-eingabe = "y"
+x = []
 
-while eingabe == "y":
-    einkaufsliste.append(input("Was möchtest du hinzufügen?: "))
-    eingabe = input("Weiter? y / n: ")
-    while eingabe not in ("y", "n"):
-        eingabe = input("Fehler! Bitte y oder n eingeben: ")
-
-while eingabe == "n":
-    eingabe2 = input(
-        "Was möchtest du machen? Anzeigen = a / Entfernen = e / "
-        "Hinzufügen = h / Beenden = b: "
-    )
-
-    if eingabe2 == "a":
-        print(einkaufsliste)
-    elif eingabe2 == "e":
-        loeschen = input("Möchtest du alles = a / eine Sache = e löschen?: ")
-        while loeschen not in ("a", "e"):
-            loeschen = input("Falsche Eingabe. Alles = a / eine Sache = e: ")
-
-        if loeschen == "e":
-            loeschen2 = input("Was möchtest du löschen?: ")
-            if loeschen2 in einkaufsliste:
-                einkaufsliste.remove(loeschen2)
-                print("Wurde gelöscht.")
+while True:
+    eingabe = input("Aufgabe: anzeigen = a / hinzufügen = h / entfernen = e / beenden = b: ")
+    while eingabe not in ["a", "h", "e", "b"]:  
+        eingabe = input("Fehler! Aufgabe: anzeigen = a / hinzufügen = h / entfernen = e / beenden = b: ")
+    if eingabe == "a":                     
+        print(x)
+    elif eingabe == "h":                   
+        while True:
+            b = input("Was möchtest du hinzufügen? Falls beenden = b: ")
+            if b in x:
+                print("Fehler! in der Liste vorhanden ")
+            elif b == "b":
+                break
             else:
-                antwort = input(
-                    "Nicht in der Liste. Möchtest du es hinzufügen? y / n: "
-                )
-                if antwort == "y":
-                    einkaufsliste.append(loeschen2)
-        elif loeschen == "a":
-            einkaufsliste.clear()
-            print("Alles wurde gelöscht.")
-
-    elif eingabe2 == "h":
-        eingabe = "y"
-        while eingabe == "y":
-            einkaufsliste.append(input("Was möchtest du hinzufügen?: "))
-            eingabe = input("Weiter? y / n: ")
-            while eingabe not in ("y", "n"):
-                eingabe = input("Fehler! Bitte y oder n eingeben: ")
-
-    elif eingabe2 == "b":
+                x.append(b)
+    elif eingabe == "e":
+        while True:
+            g = input("Möchtest du alles entfernen = a / Eine Sache = e / falls beenden = b: ")
+            if g not in ["a", "e", "b"]:
+                print("Fehler! Falsche Eingabe")
+            elif g == "a":
+                x.clear()
+                print("alles gelöscht / wurde beendet!")
+                break
+            elif g == "e":
+                while True:
+                    z = input("Was möchtest du löschen? / falls zurück = z: ")
+                    if z != "z" and z not in x:
+                        print("Fehler! in der Liste nicht vorhanden / falsche Eingabe")
+                        print(x)
+                    elif z in x:
+                        x.remove(z)
+                        print(z, "wurde gelöscht")
+                    else:
+                        break
+            else:
+                break
+    else:
         break
-
-print("Beendet.")
